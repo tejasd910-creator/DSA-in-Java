@@ -66,6 +66,20 @@ class Linked{
         }
         secondLast.next = null; 
     }
+    public boolean search(String data){
+        if(head == null){
+            System.out.println("List is Empty");
+            return false;
+        }
+        Node currNode = head;
+        while(currNode != null){
+            if(currNode.data == data)
+                return true;
+            currNode = currNode.next;
+        }
+        return false;
+    }
+
     public void reverse(){
         if(head == null || head.next ==null){
             return;
@@ -92,6 +106,7 @@ class Linked{
         list.printList();
         list.reverse();
         list.printList();
-        
+        System.out.println(list.search("this"));
+        System.out.println(list.search("be"));
     }
 }
