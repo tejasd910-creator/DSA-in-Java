@@ -6,38 +6,41 @@ class Solution {
         int sign = 1;
         int n = s.length();
 
-        // skip spaces
-        while (i < n && s.charAt(i) == ' ') {
+        // Skip leading spaces
+        while (i < n && s.charAt(i) == ' ')
             i++;
-        }
 
         if (i == n)
             return 0;
 
-        // sign check
+        // Check sign
         if (s.charAt(i) == '-') {
             sign = -1;
             i++;
-        } else if (s.charAt(i) == '+') {
+        } 
+        else if (s.charAt(i) == '+') {
             i++;
         }
 
-        int num = convert(i, 0, s);
-
-        return sign * num;
+        return convert(i, 0, sign, s);
     }
 
-    public static int convert(int i, int num, String s) {
+    public int convert(int i, int num, int sign, String s) {
 
-        if (i == s.length())
-            return num;
-
-        if (!Character.isDigit(s.charAt(i)))
-            return num;
+        if (i >= s.length() || !Character.isDigit(s.charAt(i)))
+            return num * sign;
 
         int digit = s.charAt(i) - '0';
+
+        // Overflow check
+        if (num > Integer.MAX_VALUE / 10 || 
+           (num == Integer.MAX_VALUE / 10 && digit > 7)) {
+
+            return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+        }
+
         num = num * 10 + digit;
 
-        return convert(i + 1, num, s);
+        return convert(i + 1, num, sign, s);
     }
 }
