@@ -1,4 +1,5 @@
 // User function Template for Java
+import java.util.*;
 
 class Solution {
     public List<String> AllPossibleStrings(String s) {
