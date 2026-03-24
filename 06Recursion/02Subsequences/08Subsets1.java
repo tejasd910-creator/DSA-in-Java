@@ -12,7 +12,7 @@ class Solution {
     private void findSubsets(int[] nums, int n, int idx, List<List<Integer>> ans, List<Integer> ds){
         if(n == 0) return;
         if(idx == n){
-            ans.add(new ArrayList(ds));
+            ans.add(new ArrayList<>(ds));
             return;
         }
 
