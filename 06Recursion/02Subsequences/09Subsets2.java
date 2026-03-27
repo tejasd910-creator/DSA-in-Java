@@ -12,9 +12,10 @@ class Solution {
 
     private void findSubsets(int[] nums, int n, int idx, List<List<Integer>> ans, List<Integer> ds) {
         ans.add(new ArrayList<>(ds));
-            
+
         for (int i = idx; i < n; i++) {
-            if(i > idx && nums[i] == nums[i - 1]) continue;
+            if (i > idx && nums[i] == nums[i - 1])
+                continue;
 
             ds.add(nums[i]);
             findSubsets(nums, n, i + 1, ans, ds);
