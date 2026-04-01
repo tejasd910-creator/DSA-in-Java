@@ -12,7 +12,7 @@ class PalindromePartitioning {
         return true;
     }
 
-    // Recursive function
+    // Recursive function Time Complexity O(n^3)
     static int solve(String s, int start) {
         int n = s.length();
 
