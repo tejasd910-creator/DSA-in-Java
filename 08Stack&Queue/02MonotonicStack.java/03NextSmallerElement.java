@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Solution {
-    static ArrayList<Integer> nextSmallerEle(int[] arr) {
+    static ArrayList<Integer> nextSmallerElement(int[] arr) {
         // code here
         
         ArrayList<Integer> ans = new ArrayList<>();
