@@ -1,45 +1,28 @@
 import java.util.*;
 
-class NextGreaterElement2 {
+class Solution {
+    public int[] nextGreaterElements(int[] nums) {
 
-    public static int[] nextGreaterElements(int[] nums) {
-        int n = nums.length;
-        int[] result = new int[n];
-
-        Arrays.fill(result, -1);
-
+        int[] arr = new int[nums.length];
         Stack<Integer> stack = new Stack<>();
+        int n = nums.length;
 
-        // Traverse array twice for circular behavior
-        for (int i = 2 * n - 1; i >= 0; i--) {
+        for (int i = n * 2 -1; i >= 0; i--) {
+            int num = nums[i % n];
 
-            int current = nums[i % n];
-
-            // Remove smaller or equal elements
-            while (!stack.isEmpty() && stack.peek() <= current) {
+            while (!stack.isEmpty() && num >= stack.peek())
                 stack.pop();
-            }
 
-            // Fill answer only for first pass
             if (i < n) {
-                if (!stack.isEmpty()) {
-                    result[i] = stack.peek();
-                }
+                arr[i] = stack.isEmpty() ? -1 : stack.peek();
             }
 
-            // Push current element
-            stack.push(current);
+            
+            stack.push(num);
         }
 
-        return result;
-    }
+        
 
-    public static void main(String[] args) {
-
-        int[] nums = {1, 2, 1};
-
-        int[] ans = nextGreaterElements(nums);
-
-        System.out.println(Arrays.toString(ans));
+        return arr;
     }
 }
