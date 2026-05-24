@@ -3,11 +3,11 @@ class Solution {
         int n = nums.length;
         k %= n;
 
-        swap(0, n - 1, nums);
+        swap(0, n - 1, nums); // full reverse
 
-        swap(0, k - 1, nums);
+        swap(0, k - 1, nums);  // first k reverse
 
-        swap(k, n - 1, nums);
+        swap(k, n - 1, nums);  // k to nth element reverse
     }
 
     private void swap(int low, int high, int[] nums) {
