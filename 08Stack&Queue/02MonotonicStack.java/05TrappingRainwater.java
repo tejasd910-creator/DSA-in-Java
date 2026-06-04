@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
     public int trap(int[] height) {
         if (height == null || height.length < 3) {
@@ -28,6 +30,37 @@ class Solution {
             }
         }
         return totalWater;
+    }
+
+    public int trapStack(int[] height) {
+        Stack<Integer> stack = new Stack<>();
+        int water = 0;
+
+        for (int i = 0; i < height.length; i++) {
+
+            while (!stack.isEmpty() && height[i] > height[stack.peek()]) {
+
+                int bottom = stack.pop();
+
+                // No left boundary
+                if (stack.isEmpty()) {
+                    break;
+                }
+
+                int left = stack.peek();
+
+                int width = i - left - 1;
+
+                int boundedHeight =
+                        Math.min(height[left], height[i]) - height[bottom];
+
+                water += width * boundedHeight;
+            }
+
+            stack.push(i);
+        }
+
+        return water;
     }
 
     public static void main(String[] args) {
