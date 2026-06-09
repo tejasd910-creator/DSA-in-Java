@@ -2,50 +2,50 @@ import java.util.*;
 
 class Solution {
     public int sumSubarrayMins(int[] arr) {
-        int MOD = 1_000_000_007;
+        int mod = (int) 1e9 + 7;
         int n = arr.length;
+        long sum = 0;
 
-        int[] left = new int[n];
-        int[] right = new int[n];
+        int[] psee = new int[n];
+        int[] nse = new int[n];
 
-        Stack<int[]> stack = new Stack<>();
+        Stack<Integer> stack = new Stack<>();
 
-        // Previous Less Element
-        for (int i = 0; i < n; i++) {
-            int count = 1;
+        // Next Smaller Element
+        for (int i = n - 1; i >= 0; i--) {
 
-            while (!stack.isEmpty() && stack.peek()[0] > arr[i]) {
-                count += stack.pop()[1];
-            }
+            while (!stack.isEmpty() && arr[stack.peek()] >= arr[i])
+                stack.pop();
 
-            stack.push(new int[]{arr[i], count});
-            left[i] = count;
+            nse[i] = stack.isEmpty() ? n : stack.peek();
+
+            stack.push(i);
         }
 
         stack.clear();
 
-        // Next Less or Equal Element
-        for (int i = n - 1; i >= 0; i--) {
-            int count = 1;
+        // Previous Smaller or Equal Element
+        for (int i = 0; i < n; i++) {
 
-            while (!stack.isEmpty() && stack.peek()[0] >= arr[i]) {
-                count += stack.pop()[1];
-            }
+            while (!stack.isEmpty() && arr[stack.peek()] > arr[i])
+                stack.pop();
 
-            stack.push(new int[]{arr[i], count});
-            right[i] = count;
+            psee[i] = stack.isEmpty() ? -1 : stack.peek();
+
+            stack.push(i);
         }
-
-        long result = 0;
 
         for (int i = 0; i < n; i++) {
-            result = (result + (long) arr[i] * left[i] * right[i]) % MOD;
+            int left = i - psee[i];
+            int right = nse[i] - i;
+
+            sum = (sum + ((long) left * right * arr[i]) % mod) % mod;
         }
 
-        return (int) result;
+        return (int) sum;
     }
 
-    //*******************BRUTE FORCE APPROACH***************** */
+    // *******************BRUTE FORCE APPROACH***************** */
 
     // Function to find the sum of the minimum value in each subarray
     public int sumSubarrayMinsII(int[] arr) {
@@ -53,7 +53,7 @@ class Solution {
         int n = arr.length;
 
         // Modulo value to prevent integer overflow
-        int mod = (int)1e9 + 7;
+        int mod = (int) 1e9 + 7;
 
         // Variable to store the total sum
         int sum = 0;
