@@ -7,7 +7,7 @@ class Solution {
 
         for (int asteroid : asteroids) {
 
-            boolean destroyed = false;
+            boolean destroyed = false;  // or alive = true;
 
             // Collision happens only when:
             // top moving right (+) and current moving left (-)
