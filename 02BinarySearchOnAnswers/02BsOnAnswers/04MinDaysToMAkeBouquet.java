@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Solution {
 
     // Check if it's possible to make 'm' bouquets by 'day'
