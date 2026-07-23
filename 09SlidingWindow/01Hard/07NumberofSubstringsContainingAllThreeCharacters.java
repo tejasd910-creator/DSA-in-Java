@@ -1,3 +1,5 @@
+//This is an AtMin type problem unlike previous problem here atleast a,b,c must be present in the substring in those problem goal or less than goal must be present is he required intution.
+
 class Solution {
     public int numberOfSubstrings(String s) {
         int[] count = new int[3]; // count of a, b, c
