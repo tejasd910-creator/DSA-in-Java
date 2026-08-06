@@ -35,3 +35,6 @@ class Solution {
         return count;
     }
 }
+
+
+// This is the classic question of comparator and greedy.Use comparator to sort final time in ascending then directly use that data to compare and create final list.
