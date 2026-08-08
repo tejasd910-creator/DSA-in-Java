@@ -1,28 +1,28 @@
 import java.util.*;
 
-class Solution{
+class Solution {
     public int findPlatform(int[] arr, int[] dep) {
-    int n = arr.length;
+        int n = arr.length;
 
-    Arrays.sort(arr);
-    Arrays.sort(dep);
+        Arrays.sort(arr);
+        Arrays.sort(dep);
 
-    int platformsNeeded = 1;
-    int maxPlatforms = 1;
+        int platformsNeeded = 1;
+        int maxPlatforms = 1;
 
-    int i = 1, j = 0;
+        int i = 1, j = 0;
 
-    while (i < n && j < n) {
-        if (arr[i] <= dep[j]) {
-            platformsNeeded++;
-            maxPlatforms = Math.max(maxPlatforms, platformsNeeded);
-            i++;
-        } else {
-            platformsNeeded--;
-            j++;
+        while (i < n && j < n) {
+            if (arr[i] <= dep[j]) {
+                platformsNeeded++;
+                maxPlatforms = Math.max(maxPlatforms, platformsNeeded);
+                i++;
+            } else {
+                platformsNeeded--;
+                j++;
+            }
         }
-    }
 
-    return maxPlatforms;
-}
+        return maxPlatforms;
+    }
 }
