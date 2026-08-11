@@ -19,11 +19,11 @@ class JobSequencing {
     public static void main(String[] args) {
 
         Job[] jobs = {
-            new Job('A', 2, 100),
-            new Job('B', 1, 19),
-            new Job('C', 2, 27),
-            new Job('D', 1, 25),
-            new Job('E', 3, 15)
+                new Job('A', 2, 100),
+                new Job('B', 1, 19),
+                new Job('C', 2, 27),
+                new Job('D', 1, 25),
+                new Job('E', 3, 15)
         };
 
         // Sort jobs by profit in descending order
