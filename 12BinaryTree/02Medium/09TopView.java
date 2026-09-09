@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 class Node {
     int data;
     Node left, right;
@@ -26,7 +25,8 @@ class Solution {
     public ArrayList<Integer> topView(Node root) {
         ArrayList<Integer> ans = new ArrayList<>();
 
-        if (root == null) return ans;
+        if (root == null)
+            return ans;
 
         Queue<Pair> q = new LinkedList<>();
         TreeMap<Integer, Integer> map = new TreeMap<>();
